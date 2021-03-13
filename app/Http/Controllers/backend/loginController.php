@@ -5,6 +5,8 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Validator;
+use Mockery\Exception;
 
 class loginController extends Controller
 {
@@ -12,13 +14,28 @@ class loginController extends Controller
         return view('backend.partials.login');
     }
     public function submit(Request $request){
-        $credentials = $request->only('email','password');
+        try {
+            $rules =[
+                'email'=>['required'],
+                'password'=>['required']
+            ];
+                $validate = Validator::make($request->all(),$rules);
+                if ($validate->fails()){
+                    return redirect()->back()->withErrors($validate)->withInput();
+                }
+
+                $credentials = $request->only('email','password');
         if (Auth::attempt($credentials)){
             return redirect()->route('admin');
         }
         else{
             return redirect()->back();
         }
+
+        }catch (\Exception $exception){
+            return redirect()->back()->withErrors($exception->getMessage());
+        }
+
     }
 
 }
