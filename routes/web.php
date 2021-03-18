@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[\App\Http\Controllers\frontend\homeController::class,'home'])->name('home');
-Route::get('/product/details',[\App\Http\Controllers\frontend\homeController::class,'productDetail'])->name('productDetail');
+Route::get('/product/details/{id}',[\App\Http\Controllers\frontend\homeController::class,'productDetail'])->name('productDetail');
 Route::get('/contact/us',[\App\Http\Controllers\frontend\homeController::class,'contactUs'])->name('contactUs');
 Route::get('/contacts/us',[\App\Http\Controllers\frontend\homeController::class,'contactUs2'])->name('contactsUs');
 
@@ -24,14 +24,14 @@ Route::get('/product/create',[\App\Http\Controllers\backend\productController::c
 Route::post('/product/create',[\App\Http\Controllers\backend\productController::class,'store']);
 Route::get('/product/{id}/edit',[\App\Http\Controllers\backend\productController::class,'edit'])->name('product.edit');
 Route::post('/product/{id}/edit',[\App\Http\Controllers\backend\productController::class,'update']);
-
+Route::get('/product/{id}/delete',[\App\Http\Controllers\backend\productController::class,'delete'])->name('product.delete');
 
 //frondend login Form
 Route::post('/user/login',[\App\Http\Controllers\frontend\loginFormController::class,'index'])->name('user.login');
 Route::get('/user/profile',[\App\Http\Controllers\frontend\userController::class,'profile'])->name('user.profile');
 Route::post('/user/profile',[\App\Http\Controllers\frontend\userController::class,'editProfile']);
 
-
+//userlogout
 Route::get('/user/logout',[\App\Http\Controllers\frontend\userController::class,'logout'])->name('user.logout');
 
 Route::middleware(['AdminCheck'])->group(function (){

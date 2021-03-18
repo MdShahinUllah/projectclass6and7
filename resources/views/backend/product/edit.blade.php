@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Product Name</label>
-            <input class="form-control @error('name') is-invalid @enderror"type="name" name="product_name" id="exampleFormControlInput1" required value="{{$product->name}}">
+            <input class="form-control @error('name') is-invalid @enderror"type="text" name="name" id="exampleFormControlInput1" required value="{{$product->name}}">
             @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror

@@ -128,7 +128,7 @@
                         <td><img src="{{asset('uploads/'.$product->photo)}}"alt="" style="width: 50px;"></td>
                         <td>
                             <a class="btn btn-success" href="{{route('product.edit',$product->id)}}">Edit</a>
-                            <a class="btn btn-warning">Delete</a>
+                            <a class="btn btn-warning" href="{{route('product.delete',$product->id)}}">Delete</a>
                         </td>
                     </tr>
                     @endforeach

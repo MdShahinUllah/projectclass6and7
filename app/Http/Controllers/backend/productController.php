@@ -25,7 +25,7 @@ class productController extends Controller
     public function store(Request $request){
         try {
             $rules = [
-                'name'=>['required','max:10'],
+                'name'=>['required'],
                 'price'=>['required','numeric'],
                 'description'=>['required'],
                 'photo'=>['required']
@@ -60,7 +60,7 @@ class productController extends Controller
     public function update(Request $request, $id){
         try {
             $rules = [
-                'name'=>['required','max:10'],
+                'name'=>['required'],
                 'price'=>['required','numeric'],
                 'description'=>['required'],
                 'photo'=>['required']
@@ -73,18 +73,19 @@ class productController extends Controller
 
             $product = product::find($id);
             $product->update([
-                'name'=>$request->input('product_name'),
+                'name'=>$request->input('name'),
                 'price'=>$request->input('price'),
                 'description'=>$request->input('description'),
             ]);
             if ($request->file('photo')){
                 if (file_exists('uploads/'. $product->photo)){
                     unlink('uploads/'. $product->photo);
-                };
-            };
+                }
+            }
             $photo=$request->file('photo');
             $filename = time().'_product'.$photo->getClientOriginalExtension();
             $request->photo->move('uploads',$filename);
+
             return redirect()->route('admin.product');
 
         }catch (\Exception $exception){
@@ -92,6 +93,11 @@ class productController extends Controller
         }
 
 
+    }
+    public function delete($id){
+        $product= product::find($id);
+        $product->delete();
+        return redirect()->back();
     }
 
 
