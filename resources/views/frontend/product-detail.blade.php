@@ -83,7 +83,7 @@
                                     <input class="form-control" type="number" value="1">
                                 </div>
                             </div>
-                            <div class="ps-product__shopping"><a class="ps-btn mb-10" href="cart.html">Add to cart<i class="ps-icon-next"></i></a>
+                            <div class="ps-product__shopping"><a class="ps-btn mb-10" href="{{route('add.cart',$product->id)}}">Add to cart<i class="ps-icon-next"></i></a>
                                 <div class="ps-product__actions"><a class="mr-10" href="whishlist.html"><i class="ps-icon-heart"></i></a><a href="compare.html"><i class="ps-icon-share"></i></a></div>
                             </div>
                         </div>

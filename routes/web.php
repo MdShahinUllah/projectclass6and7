@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\frontend\cartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,10 @@ Route::post('/product/create',[\App\Http\Controllers\backend\productController::
 Route::get('/product/{id}/edit',[\App\Http\Controllers\backend\productController::class,'edit'])->name('product.edit');
 Route::post('/product/{id}/edit',[\App\Http\Controllers\backend\productController::class,'update']);
 Route::get('/product/{id}/delete',[\App\Http\Controllers\backend\productController::class,'delete'])->name('product.delete');
+
+//cart
+Route::get('/add/cart/{id}',[\App\Http\Controllers\frontend\cartController::class,'store'])->name('add.cart');
+Route::get('/checkout',[\App\Http\Controllers\frontend\cartController::class,'checkout'])->name('checkout');
 
 //frondend login Form
 Route::post('/user/login',[\App\Http\Controllers\frontend\loginFormController::class,'index'])->name('user.login');

@@ -59,7 +59,7 @@
                                 <div class="ps-shoe mb-30">
                                     <div class="ps-shoe__thumbnail">
                                         <div class="ps-badge"><span>New</span></div>
-                                        <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a><img src="@if(!filter_var($product->photo, FILTER_VALIDATE_URL)) {{asset('uploads/'.$product->photo)}}@else{{$product->photo}} @endif" alt=""><a class="ps-shoe__overlay" href="{{route('productDetail',$product->id)}}"></a>
+                                        <div class="ps-badge ps-badge--sale ps-badge--2nd"><span>-35%</span></div><a class="ps-shoe__favorite" href="{{route('add.cart',$product->id)}}"><i class="ps-icon-shopping-cart"style="font-weight: bold"></i></a><img src="@if(!filter_var($product->photo, FILTER_VALIDATE_URL)) {{asset('uploads/'.$product->photo)}}@else{{$product->photo}} @endif" alt=""><a class="ps-shoe__overlay" href="{{route('productDetail',$product->id)}}"></a>
                                     </div>
                                     <div class="ps-shoe__content">
                                         <div class="ps-shoe__variants">
