@@ -38,9 +38,17 @@
             <th scope="col">{{$totalQty}}</th>
             <th scope="col">{{$totalPrice}}</th>
         </tr>
-
         </tbody>
     </table>
+    <div style="width: 70%; margin: 50px auto;">
+        @if($totalQty>0)
+            <a href="{{route('placeOrder')}}" class="btn btn-success btn-block">Place order</a>
+        @else
+            <a href="{{route('')}}" class="btn btn-danger btn-block">Please Add to cart products</a>
+        @endif
+    </div>
+
+
 
 
 @stop

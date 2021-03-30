@@ -32,5 +32,9 @@ class cartController extends Controller
         return view('frontend.order.checkout',compact('cart'));
     }
 
+    public function PlaceOrder(){
+        return view('frontend.order.placeOrder');
+    }
+
 
 }

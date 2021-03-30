@@ -38,9 +38,13 @@ Route::post('/user/profile',[\App\Http\Controllers\frontend\userController::clas
 
 //userlogout
 Route::get('/user/logout',[\App\Http\Controllers\frontend\userController::class,'logout'])->name('user.logout');
-
+Route::get('/place-order',[cartController::class,'PlaceOrder'])->name('placeOrder');
+// ADMIN CHECK =================
 Route::middleware(['AdminCheck'])->group(function (){
     Route::middleware(['auth'])->group(function () {
+
+        //place order=========================
+
 
     Route::get('/product_upload',[\App\Http\Controllers\productController::class,'productForm']);
     Route::post('/product_upload_data',[\App\Http\Controllers\productController::class,'productFormData'])->name('productFromData');
